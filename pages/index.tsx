@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { useEffect } from 'react';
-import { useQueryPokemon } from '../src/hooks';
+import { useQueryPokemon } from '@hooks/index';
 
 const Home: NextPage = () => {
   const pokemons = useQueryPokemon()
