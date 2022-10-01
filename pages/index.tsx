@@ -3,13 +3,15 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { useEffect } from 'react';
-import { useQueryPokemon } from '../src/hooks/useQueryPokemon';
+import { useQueryPokemon } from '../src/hooks';
 
 const Home: NextPage = () => {
   const pokemons = useQueryPokemon()
+
   useEffect(() => {
     console.log('pokemons', pokemons)
   }, [pokemons])
+
   return (
     <div className={styles.container}>
       <Head>
