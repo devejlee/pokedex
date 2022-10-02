@@ -2,16 +2,11 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from "next/link";
 import styles from '../styles/Home.module.css'
-import { useEffect } from 'react';
 import { useQueryPokemon } from '@hooks/index';
 import { Pokemon } from '@typedef/pokemon';
 
 const Home: NextPage = () => {
   const pokemons = useQueryPokemon()
-
-  // useEffect(() => {
-  //   console.log('pokemons', pokemons)
-  // }, [pokemons])
 
   if (pokemons.isLoading) {
     return (
