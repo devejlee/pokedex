@@ -28,6 +28,16 @@ const Home: NextPage = () => {
             )
           }
         </ul>
+        <button
+          onClick={() => pokemons.fetchNextPage()}
+          disabled={!pokemons.hasNextPage || pokemons.isFetchingNextPage}
+        >
+          {pokemons.isFetchingNextPage
+            ? "Loading more..."
+            : pokemons.hasNextPage
+              ? "Load More"
+              : "Nothing more to load"}
+        </button>
       </main>
 
     </div>
