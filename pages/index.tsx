@@ -12,6 +12,18 @@ const Home: NextPage = () => {
     console.log('pokemons', pokemons)
   }, [pokemons])
 
+  if (pokemons.isLoading) {
+    return (
+      <div>Loading...</div>
+    )
+  }
+
+  if (pokemons.isError) {
+    return (
+      <div>Error</div>
+    )
+  }
+
   return (
     <div className={styles.container}>
       <Head>
