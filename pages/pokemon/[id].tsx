@@ -8,6 +8,19 @@ const Pokemon: NextPage = () => {
   const pokemonId = typeof router.query?.id === "string" ? router.query.id : "";
   const pokemon = useQueryPokemonById(pokemonId)
   console.log('pokemon', pokemon)
+
+  if (pokemon.isLoading) {
+    return (
+      <div>Loading...</div>
+    )
+  }
+
+  if (pokemon.isError) {
+    return (
+      <div>Error</div>
+    )
+  }
+
   return (
     <div>
       <Image src={pokemon?.data?.sprites?.other?.["official-artwork"]?.front_default} alt={pokemonId} width={100} height={100}></Image>
