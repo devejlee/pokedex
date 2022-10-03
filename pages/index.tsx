@@ -1,9 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Link from "next/link";
 import styles from '../styles/Home.module.css'
 import { useQueryPokemon } from '@hooks/index';
-import { Pokemon } from '@typedef/pokemon';
+import PokemonList from '@components/PokemonList';
 
 const Home: NextPage = () => {
   const pokemons = useQueryPokemon()
@@ -29,29 +28,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <ul>
-          {
-            pokemons?.data?.pages.map((group) =>
-              group?.results.map((pokemon: Pokemon) => <li key={pokemon.name}>
-                <Link href={`/pokemon/${pokemon.name}`} key={pokemon.name}>
-                  <a>
-                    {pokemon.name}
-                  </a>
-                </Link>
-              </li>)
-            )
-          }
-        </ul>
-        <button
-          onClick={() => pokemons.fetchNextPage()}
-          disabled={!pokemons.hasNextPage || pokemons.isFetchingNextPage}
-        >
-          {pokemons.isFetchingNextPage
-            ? "Loading more..."
-            : pokemons.hasNextPage
-              ? "Load More"
-              : "Nothing more to load"}
-        </button>
+        <PokemonList pokemons={pokemons} />
       </main>
 
     </div>

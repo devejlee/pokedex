@@ -9,7 +9,6 @@ const Pokemon: NextPage = () => {
   const router = useRouter();
   const pokemonId = typeof router.query?.id === "string" ? router.query.id : "";
   const pokemon = useQueryPokemonById(pokemonId)
-  console.log('pokemon', pokemon)
 
   if (pokemon.isLoading) {
     return (

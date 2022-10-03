@@ -19,6 +19,7 @@
       "@api/*": ["api/*"],
       "@hooks/*": ["hooks/*"],
       "@typedef/*": ["typedef/*"],
+      "@components/*": ["components/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
