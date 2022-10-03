@@ -9,18 +9,6 @@ import { Pokemon } from '@typedef/pokemon';
 const Home: NextPage = () => {
   const pokemons = useQueryPokemon()
 
-  if (pokemons.isLoading) {
-    return (
-      <div>Loading...</div>
-    )
-  }
-
-  if (pokemons.isError) {
-    return (
-      <div>Error</div>
-    )
-  }
-
   return (
     <div className={styles.container}>
       <Head>
@@ -30,7 +18,9 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <PokemonList>
+        <PokemonList
+          isLoading={pokemons.isLoading}
+          isError={pokemons.isError}>
           {
             pokemons.data?.pages.map((group) =>
               group?.results.map((pokemon: Pokemon) => <div key={pokemon.name}>
