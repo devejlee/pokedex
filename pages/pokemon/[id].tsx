@@ -1,10 +1,10 @@
+import { fetchPokemonById } from '@api/pokemonById';
+import PokemonListItem from '@components/PokemonList';
+import { useQueryPokemonById } from "@hooks/index"
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next'
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { QueryClient, dehydrate } from "react-query";
-import { fetchPokemonById } from '@api/pokemonById';
-import PokemonListItem from '@components/PokemonList';
-import { useQueryPokemonById } from "@hooks/index"
 
 const Pokemon: NextPage = () => {
   const router = useRouter();
