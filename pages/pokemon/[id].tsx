@@ -1,7 +1,9 @@
-import type { NextPage } from 'next'
+import type { NextPage, GetStaticProps, GetStaticPaths } from 'next'
 import { useRouter } from "next/router";
 import { useQueryPokemonById } from "@hooks/index"
 import Image from "next/image";
+import { QueryClient, dehydrate } from "react-query";
+import { fetchPokemonById } from '@api/pokemonById';
 
 const Pokemon: NextPage = () => {
   const router = useRouter();
@@ -27,5 +29,27 @@ const Pokemon: NextPage = () => {
     </div>
   )
 }
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const id = context.params?.id as string;
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery(["pokemonById", id],
+    () => fetchPokemonById(id)
+  );
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient)
+    }
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: "blocking"
+  };
+};
 
 export default Pokemon

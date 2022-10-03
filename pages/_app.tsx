@@ -1,15 +1,17 @@
 import '../styles/globals.css'
 import { useState } from "react";
 import type { AppProps } from 'next/app'
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider, Hydrate } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps<{ dehydratedState: unknown }>) {
   const [queryClient] = useState(() => new QueryClient());
   return (
     <QueryClientProvider client={queryClient}>
-      <Component {...pageProps} />
-      <ReactQueryDevtools initialIsOpen={false} />
+      <Hydrate state={pageProps.dehydratedState}>
+        <Component {...pageProps} />
+        <ReactQueryDevtools initialIsOpen={false} />
+      </Hydrate>
     </QueryClientProvider>
   );
 }
