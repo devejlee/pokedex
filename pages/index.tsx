@@ -20,7 +20,8 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <PokemonList
           isLoading={pokemons.isLoading}
-          isError={pokemons.isError}>
+          isError={pokemons.isError}
+        >
           {
             pokemons.data?.pages.map((group) =>
               group?.results.map((pokemon: Pokemon) => <div key={pokemon.name}>
