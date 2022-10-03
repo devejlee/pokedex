@@ -1,9 +1,10 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next'
-import { useRouter } from "next/router";
-import { useQueryPokemonById } from "@hooks/index"
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { QueryClient, dehydrate } from "react-query";
 import { fetchPokemonById } from '@api/pokemonById';
+import PokemonListItem from '@components/PokemonList';
+import { useQueryPokemonById } from "@hooks/index"
 
 const Pokemon: NextPage = () => {
   const router = useRouter();
@@ -23,9 +24,9 @@ const Pokemon: NextPage = () => {
   }
 
   return (
-    <div>
+    <PokemonListItem>
       <Image src={pokemon?.data?.sprites?.other?.["official-artwork"]?.front_default} alt={pokemonId} width={100} height={100}></Image>
-    </div>
+    </PokemonListItem>
   )
 }
 
