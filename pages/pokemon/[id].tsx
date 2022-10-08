@@ -1,5 +1,5 @@
 import { fetchPokemonById } from '@api/pokemonById';
-import PokemonListItem from '@components/PokemonList';
+import { PokemonListItem } from '@components/PokemonListItem';
 import { useQueryPokemonById } from "@hooks/index"
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next'
 import Image from "next/image";

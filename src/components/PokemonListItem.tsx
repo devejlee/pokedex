@@ -26,4 +26,4 @@ const PokemonListItem = ({ isLoading, isError, children }: PokemonListItemProps)
   )
 }
 
-export default PokemonListItem
+export { PokemonListItem }

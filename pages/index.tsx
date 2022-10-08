@@ -1,4 +1,4 @@
-import PokemonList from '@components/PokemonList';
+import { PokemonList } from '@components/PokemonList';
 import { useQueryPokemon } from '@hooks/index';
 import { Pokemon } from '@typedef/pokemon';
 import type { NextPage } from 'next'
