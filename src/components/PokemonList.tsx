@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react';
 import { ReactNode } from "react"
 
 interface PokemonListProps {
@@ -20,9 +21,9 @@ const PokemonList = ({ isLoading, isError, children }: PokemonListProps) => {
   }
 
   return (
-    <>
+    <Box bg="red.100">
       {children}
-    </>
+    </Box>
   )
 }
 
