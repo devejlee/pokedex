@@ -21,7 +21,7 @@ const PokemonList = ({ isLoading, isError, children }: PokemonListProps) => {
   }
 
   return (
-    <Box bg="red.100">
+    <Box bg="red.100" maxW={500} w={"100%"}>
       {children}
     </Box>
   )
