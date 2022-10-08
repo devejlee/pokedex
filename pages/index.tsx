@@ -1,5 +1,5 @@
-import { LayoutDefault } from '@components/LayoutDefault';
-import { PokemonList } from '@components/PokemonList';
+import { LayoutDefault } from '@components/LayoutDefault/LayoutDefault';
+import { PokemonList } from '@components/PokemonList/PokemonList';
 import { useQueryPokemon } from '@hooks/index';
 import { Pokemon } from '@typedef/pokemon';
 import Head from 'next/head'
