@@ -1,4 +1,4 @@
-import '@styles/globals.css'
+import '@styles/globals.scss'
 import { ChakraProvider } from '@chakra-ui/react'
 import { theme } from '@styles/theme'
 import { NextPage } from 'next';
