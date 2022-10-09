@@ -1,5 +1,6 @@
 import { LayoutDefault } from '@components/LayoutDefault/LayoutDefault';
 import { PokemonList } from '@components/PokemonList/PokemonList';
+import { PokemonListItem } from '@components/PokemonListItem/PokemonListItem';
 import { useQueryPokemon } from '@hooks/index';
 import { Pokemon } from '@typedef/pokemon';
 import Head from 'next/head'
@@ -25,11 +26,13 @@ const Home: NextPageWithLayout = () => {
         {
           pokemons.data?.pages.map((group) =>
             group?.results.map((pokemon: Pokemon) => <div key={pokemon.name}>
-              <Link href={`/pokemon/${pokemon.name}`} key={pokemon.name}>
-                <a>
-                  {pokemon.name}
-                </a>
-              </Link>
+              <PokemonListItem>
+                <Link href={`/pokemon/${pokemon.name}`} key={pokemon.name}>
+                  <a>
+                    {pokemon.name}
+                  </a>
+                </Link>
+              </PokemonListItem>
             </div>)
           )
         }
