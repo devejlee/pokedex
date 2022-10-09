@@ -4,8 +4,8 @@ import { PokemonListItem } from '@components/PokemonListItem/PokemonListItem';
 import { useQueryPokemon } from '@hooks/index';
 import { Pokemon } from '@typedef/pokemon';
 import Head from 'next/head'
-import Link from "next/link";
-import { Button } from '@chakra-ui/react';
+import NextLink from 'next/link';
+import { Button, Link } from '@chakra-ui/react';
 import { NextPageWithLayout } from './_app';
 
 const Home: NextPageWithLayout = () => {
@@ -27,11 +27,11 @@ const Home: NextPageWithLayout = () => {
           pokemons.data?.pages.map((group) =>
             group?.results.map((pokemon: Pokemon) => <div key={pokemon.name}>
               <PokemonListItem>
-                <Link href={`/pokemon/${pokemon.name}`} key={pokemon.name}>
-                  <a>
+                <NextLink href={`/pokemon/${pokemon.name}`} key={pokemon.name} passHref>
+                  <Link width="100%" height="100%" textAlign="center" _hover={{}}>
                     {pokemon.name}
-                  </a>
-                </Link>
+                  </Link>
+                </NextLink>
               </PokemonListItem>
             </div>)
           )
