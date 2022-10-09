@@ -1,12 +1,14 @@
+import { LayoutDefault } from '@components/LayoutDefault/LayoutDefault';
 import { fetchPokemonById } from '@api/pokemonById';
 import { PokemonListItem } from '@components/PokemonListItem/PokemonListItem';
 import { useQueryPokemonById } from "@hooks/index"
-import type { NextPage, GetStaticProps, GetStaticPaths } from 'next'
+import type { GetStaticProps, GetStaticPaths } from 'next'
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { QueryClient, dehydrate } from "react-query";
+import { NextPageWithLayout } from '../_app';
 
-const Pokemon: NextPage = () => {
+const Pokemon: NextPageWithLayout = () => {
   const router = useRouter();
   const pokemonId = typeof router.query?.id === "string" ? router.query.id : "";
   const pokemon = useQueryPokemonById(pokemonId)
@@ -42,5 +44,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: "blocking"
   };
 };
+
+Pokemon.getLayout = page => <LayoutDefault>{page}</LayoutDefault>;
 
 export default Pokemon

@@ -1,5 +1,5 @@
 import { Box } from '@chakra-ui/react';
-import { ReactNode } from "react"
+import { ReactNode } from "react";
 
 interface PokemonListProps {
   isLoading?: boolean;
@@ -21,7 +21,7 @@ const PokemonList = ({ isLoading, isError, children }: PokemonListProps) => {
   }
 
   return (
-    <Box bg="red.100" maxW={500} w={"100%"}>
+    <Box bg="red.100" maxW={500} maxH={500} w={"100%"} overflowY="scroll" border="2px">
       {children}
     </Box>
   )

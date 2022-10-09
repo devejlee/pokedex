@@ -7,7 +7,7 @@ interface LayoutDefaultProps {
 
 const LayoutDefault = ({ children }: LayoutDefaultProps) => {
   return (
-    <Flex w="100%" justifyContent="center" alignItems="center">
+    <Flex w="100%" justifyContent="center" alignItems="center" height="100vh">
       {children}
     </Flex>
   )

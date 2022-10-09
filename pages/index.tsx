@@ -48,6 +48,6 @@ const Home: NextPageWithLayout = () => {
   )
 }
 
-export default Home
-
 Home.getLayout = page => <LayoutDefault>{page}</LayoutDefault>;
+
+export default Home
