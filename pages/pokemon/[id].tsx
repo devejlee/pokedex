@@ -1,6 +1,6 @@
 import { LayoutDefault } from '@components/LayoutDefault/LayoutDefault';
 import { fetchPokemonById } from '@api/pokemonById';
-import { PokemonListItem } from '@components/PokemonListItem/PokemonListItem';
+import { PokemonInfo } from '@components/PokemonInfo/PokemonInfo';
 import { useQueryPokemonById } from "@hooks/index"
 import type { GetStaticProps, GetStaticPaths } from 'next'
 import Image from "next/image";
@@ -14,12 +14,12 @@ const Pokemon: NextPageWithLayout = () => {
   const pokemon = useQueryPokemonById(pokemonId)
 
   return (
-    <PokemonListItem
+    <PokemonInfo
       isLoading={pokemon.isLoading}
       isError={pokemon.isError}
     >
       <Image src={pokemon?.data?.sprites?.other?.["official-artwork"]?.front_default} alt={pokemonId} width={100} height={100}></Image>
-    </PokemonListItem>
+    </PokemonInfo>
   )
 }
 

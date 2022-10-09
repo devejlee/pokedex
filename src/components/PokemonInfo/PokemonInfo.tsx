@@ -1,13 +1,13 @@
 import { Box } from '@chakra-ui/react';
 import { ReactNode } from "react"
 
-interface PokemonListItemProps {
+interface PokemonInfoProps {
   isLoading?: boolean;
   isError?: boolean;
   children: ReactNode
 }
 
-const PokemonListItem = ({ isLoading, isError, children }: PokemonListItemProps) => {
+const PokemonInfo = ({ isLoading, isError, children }: PokemonInfoProps) => {
   if (isLoading) {
     return (
       <div>Loading...</div>
@@ -27,4 +27,4 @@ const PokemonListItem = ({ isLoading, isError, children }: PokemonListItemProps)
   )
 }
 
-export { PokemonListItem }
+export { PokemonInfo }
