@@ -8,7 +8,7 @@ interface LayoutDefaultProps {
 const LayoutDefault = ({ children }: LayoutDefaultProps) => {
   return (
     <Flex w="100%" justifyContent="center" alignItems="center" height="100vh">
-      <Box bg="red.100" maxW={600} w="100%" border="2px">
+      <Box bg="red.100" maxW={600} w="100%" border="2px" rounded="10px">
         <Flex p={50} h={600} flexDir="column" justifyContent="space-between">
           <Box>
             {children}
