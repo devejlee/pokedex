@@ -1,18 +1,12 @@
 import { extendTheme } from "@chakra-ui/react"
+import { colors, fonts, textStyles } from '@styles/theme/foundations';
+import { Button } from '@styles/theme/components/Button';
 
 export const theme = extendTheme({
-  colors: {
-    red: {
-      100: "#DD3431",
-    },
+  colors,
+  fonts,
+  textStyles,
+  components: {
+    Button,
   },
-  fonts: {
-    vt323: 'VT323, monospace',
-  },
-  textStyles: {
-    heading2: {
-      fontFamily: 'vt323',
-      fontSize: '25px',
-    },
-  }
 })
