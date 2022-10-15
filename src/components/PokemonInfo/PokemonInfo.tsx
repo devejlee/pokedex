@@ -38,11 +38,11 @@ const PokemonInfo = ({ isLoading, isError, name, id, image, weight, xp, abilitie
             <Image src={image} layout="fill" alt={id}></Image>
           </Box>
         </Flex>
-        <HStack textStyle={'body2'} py="10px" bg="#f0eee6">
+        <HStack textStyle={'body2'} py="10px" bg="#f0eee6" borderColor='gray.200' borderBottom={'2px'}>
           <Text pl="20px" w="146px">Weight</Text>
           <Text w="146px">{weight / 10} kg</Text>
         </HStack>
-        <HStack textStyle={'body2'} py="10px" bg="#f0eee6">
+        <HStack textStyle={'body2'} py="10px" bg="#f0eee6" borderColor='gray.200' borderBottom={'2px'}>
           <Text pl="20px" w="146px">Xp</Text>
           <Text w="146px">{xp}</Text>
         </HStack>
