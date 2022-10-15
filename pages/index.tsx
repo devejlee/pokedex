@@ -1,11 +1,12 @@
+import { Button, Link } from '@chakra-ui/react';
 import { LayoutDefault } from '@components/LayoutDefault/LayoutDefault';
 import { PokemonList } from '@components/PokemonList/PokemonList';
 import { PokemonListItem } from '@components/PokemonListItem/PokemonListItem';
 import { useQueryPokemon } from '@hooks/index';
 import { Pokemon } from '@typedef/pokemon';
+import { capitalizeFirstLetter } from '@utils/uppercase';
 import Head from 'next/head'
 import NextLink from 'next/link';
-import { Button, Link } from '@chakra-ui/react';
 import { NextPageWithLayout } from './_app';
 
 const Home: NextPageWithLayout = () => {
@@ -29,7 +30,7 @@ const Home: NextPageWithLayout = () => {
               <PokemonListItem>
                 <NextLink href={`/pokemon/${pokemon.name}`} key={pokemon.name} passHref>
                   <Link width="100%" height="100%" textAlign="center" _hover={{}}>
-                    {pokemon.name}
+                    {capitalizeFirstLetter(pokemon.name)}
                   </Link>
                 </NextLink>
               </PokemonListItem>
