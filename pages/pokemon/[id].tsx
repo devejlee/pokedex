@@ -3,7 +3,6 @@ import { fetchPokemonById } from '@api/pokemonById';
 import { PokemonInfo } from '@components/PokemonInfo/PokemonInfo';
 import { useQueryPokemonById } from "@hooks/index"
 import type { GetStaticProps, GetStaticPaths } from 'next'
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { QueryClient, dehydrate } from "react-query";
 import { NextPageWithLayout } from '../_app';
@@ -17,8 +16,13 @@ const Pokemon: NextPageWithLayout = () => {
     <PokemonInfo
       isLoading={pokemon.isLoading}
       isError={pokemon.isError}
+      name={pokemon?.data?.name}
+      id={pokemonId}
+      image={pokemon?.data?.sprites.other?.["official-artwork"]?.front_default}
+      weight={pokemon?.data?.weight}
+      xp={pokemon?.data?.base_experience}
+      abilities={pokemon?.data?.abilities?.map((item: any) => item.ability.name)}
     >
-      <Image src={pokemon?.data?.sprites?.other?.["official-artwork"]?.front_default} alt={pokemonId} width={100} height={100}></Image>
     </PokemonInfo>
   )
 }
