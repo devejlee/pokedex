@@ -1,4 +1,5 @@
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Flex, Text, HStack, UnorderedList, ListItem } from '@chakra-ui/react';
+import { capitalizeFirstLetter } from '@utils/uppercase';
 import Image from "next/image";
 import { ReactNode } from "react"
 
@@ -29,17 +30,32 @@ const PokemonInfo = ({ isLoading, isError, name, id, image, weight, xp, abilitie
   }
 
   return (
-    <Box bg="white">
-      <Text>{name}</Text>
-      <Image src={image} alt={id} width={100} height={100}></Image>
-      <Text>{weight / 10} kg</Text>
-      <Text>{xp}</Text>
-      <ul>
-        {abilities.map((ability) => (
-          <li key={ability}>{ability}</li>
-        ))}
-      </ul>
-    </Box>
+    <Flex bg="white" h={400} overflowY="scroll" justifyContent={'center'} alignItems={'center'}>
+      <Flex flexDir={'column'} alignItems={'center'} w="100%" maxW={300} h={350} mx="auto" border='4px' borderColor='gray.200'>
+        <Flex bg="#e0d494" flexDir={'column'} w="100%" alignItems={'center'}>
+          <Text>{capitalizeFirstLetter(name)}</Text>
+          <Box pos={'relative'} w={150} h={150}>
+            <Image src={image} layout="fill" alt={id}></Image>
+          </Box>
+        </Flex>
+        <HStack>
+          <Text pl="20px" w="146px">Weight</Text>
+          <Text w="146px">{weight / 10} kg</Text>
+        </HStack>
+        <HStack>
+          <Text pl="20px" w="146px">Xp</Text>
+          <Text w="146px">{xp}</Text>
+        </HStack>
+        <HStack w="100%">
+          <Text pl="15px" w="146px">Abilities</Text>
+          <UnorderedList>
+            {abilities.map((ability) => (
+              <ListItem key={ability}>{ability}</ListItem>
+            ))}
+          </UnorderedList>
+        </HStack>
+      </Flex>
+    </Flex>
   )
 }
 
