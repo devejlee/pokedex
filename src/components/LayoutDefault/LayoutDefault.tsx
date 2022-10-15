@@ -1,4 +1,5 @@
-import { Box, Button, Flex } from '@chakra-ui/react';
+import { Box, Button, Flex, Link } from '@chakra-ui/react';
+import NextLink from 'next/link';
 import { ReactNode } from "react"
 
 interface LayoutDefaultProps {
@@ -13,12 +14,16 @@ const LayoutDefault = ({ children }: LayoutDefaultProps) => {
           <Box>
             {children}
           </Box>
-          <Box bg="orange" h={100}>
-            <Button size={'lg'} variant="green">PokeAPi</Button>
-          </Box>
+          <Button p={0} alignSelf="center" size={'lg'} maxW="200px" w="100%" fontSize="40px" variant="green">
+            <NextLink href="/" passHref>
+              <Link pt="4px" pb="8px" width="100%" height="100%" _hover={{}}>
+                Home
+              </Link>
+            </NextLink>
+          </Button>
         </Flex>
-      </Box>
-    </Flex>
+      </Box >
+    </Flex >
   )
 }
 

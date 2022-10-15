@@ -12,6 +12,7 @@ const pressedStyle = (): SystemStyleInterpolation => ({
 
 export const Button: ComponentStyleConfig = {
   baseStyle: {
+    fontFamily: "vt323",
     pos: 'relative',
     bg: 'transparent',
     borderColor: 'transparent',
@@ -102,6 +103,5 @@ export const Button: ComponentStyleConfig = {
   },
   defaultProps: {
     size: 'md',
-    variant: 'green',
   },
 };
