@@ -14,9 +14,9 @@ const LayoutDefault = ({ children }: LayoutDefaultProps) => {
           <Box>
             {children}
           </Box>
-          <Button p={0} alignSelf="center" size={'lg'} maxW="200px" w="100%" fontSize="40px" variant="green">
+          <Button p={0} alignSelf="center" size={'lg'} maxW="200px" w="100%" variant="green">
             <NextLink href="/" passHref>
-              <Link pt="4px" pb="8px" width="100%" height="100%" _hover={{}}>
+              <Link pt="4px" pb="8px" width="100%" height="100%" _hover={{}} textStyle={'body1'}>
                 Home
               </Link>
             </NextLink>
