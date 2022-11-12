@@ -7,7 +7,7 @@ import { Pokemon } from '@typedef/pokemon';
 import { capitalizeFirstLetter } from '@utils/index';
 import Head from 'next/head'
 import NextLink from 'next/link';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { NextPageWithLayout } from './_app';
 
 const Home: NextPageWithLayout = () => {
@@ -20,6 +20,15 @@ const Home: NextPageWithLayout = () => {
       pokemons.fetchNextPage()
     }
   }
+
+  const handleSetScrollPosition = () => {
+    if (!pokemonListRef.current) return
+    sessionStorage.setItem("scroll-position", pokemonListRef.current?.scrollTop.toString());
+  }
+
+  useEffect(() => {
+    pokemonListRef.current?.scrollTo(0, Number(sessionStorage.getItem('scroll-position')) ?? 0)
+  }, [])
 
   return (
     <>
@@ -39,7 +48,7 @@ const Home: NextPageWithLayout = () => {
           {
             pokemons.data?.pages.map((group) =>
               group?.results.map((pokemon: Pokemon) => <div key={pokemon.name}>
-                <PokemonListItem>
+                <PokemonListItem onClick={handleSetScrollPosition}>
                   <NextLink href={`/pokemon/${pokemon.name}`} key={pokemon.name} passHref>
                     <Link py="10px" width="100%" height="100%" textAlign="center" _hover={{}}>
                       {capitalizeFirstLetter(pokemon.name)}
