@@ -8,7 +8,7 @@ interface PokemonListItemProps {
 const PokemonListItem = ({ children }: PokemonListItemProps) => {
 
   return (
-    <Flex justifyContent="center" borderBottom="1px" color="white" py="10px" textStyle="heading2">
+    <Flex justifyContent="center" borderBottom="1px" color="white" textStyle="heading2">
       {children}
     </Flex >
   )

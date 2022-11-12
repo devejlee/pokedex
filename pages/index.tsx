@@ -41,7 +41,7 @@ const Home: NextPageWithLayout = () => {
               group?.results.map((pokemon: Pokemon) => <div key={pokemon.name}>
                 <PokemonListItem>
                   <NextLink href={`/pokemon/${pokemon.name}`} key={pokemon.name} passHref>
-                    <Link width="100%" height="100%" textAlign="center" _hover={{}}>
+                    <Link py="10px" width="100%" height="100%" textAlign="center" _hover={{}}>
                       {capitalizeFirstLetter(pokemon.name)}
                     </Link>
                   </NextLink>
