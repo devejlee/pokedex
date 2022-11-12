@@ -1,14 +1,14 @@
-import { Flex } from '@chakra-ui/react';
+import { Flex, FlexProps } from '@chakra-ui/react';
 import { ReactNode } from "react";
 
-interface PokemonListItemProps {
+interface PokemonListItemProps extends FlexProps {
   children: ReactNode
 }
 
-const PokemonListItem = ({ children }: PokemonListItemProps) => {
+const PokemonListItem = ({ children, ...props }: PokemonListItemProps) => {
 
   return (
-    <Flex justifyContent="center" borderBottom="1px" color="white" textStyle="heading2">
+    <Flex justifyContent="center" borderBottom="1px" color="white" textStyle="heading2" {...props}>
       {children}
     </Flex >
   )

@@ -1,9 +1,9 @@
-import { Box, Flex, Text, HStack, UnorderedList, ListItem } from '@chakra-ui/react';
+import { Box, Flex, FlexProps, Text, HStack, UnorderedList, ListItem } from '@chakra-ui/react';
 import { capitalizeFirstLetter } from '@utils/index';
 import Image from "next/image";
 import { ReactNode } from "react"
 
-interface PokemonInfoProps {
+interface PokemonInfoProps extends FlexProps {
   isLoading?: boolean;
   isError?: boolean;
   children: ReactNode
@@ -16,7 +16,7 @@ interface PokemonInfoProps {
 
 }
 
-const PokemonInfo = ({ isLoading, isError, name, id, image, weight, xp, abilities }: PokemonInfoProps) => {
+const PokemonInfo = ({ isLoading, isError, name, id, image, weight, xp, abilities, ...props }: PokemonInfoProps) => {
   if (isLoading) {
     return (
       <div>Loading...</div>
@@ -30,7 +30,7 @@ const PokemonInfo = ({ isLoading, isError, name, id, image, weight, xp, abilitie
   }
 
   return (
-    <Flex bg="white" h={400} overflowY="scroll" justifyContent={'center'} alignItems={'center'}>
+    <Flex bg="white" h={400} overflowY="scroll" justifyContent={'center'} alignItems={'center'} {...props}>
       <Flex flexDir={'column'} alignItems={'center'} w="100%" maxW={300} mx="auto" border='4px' borderColor='gray.200' rounded="10px" overflow={'hidden'}>
         <Flex bg="#e0d494" flexDir={'column'} w="100%" alignItems={'center'}>
           <Text textStyle="heading2">{capitalizeFirstLetter(name)}</Text>
@@ -55,7 +55,7 @@ const PokemonInfo = ({ isLoading, isError, name, id, image, weight, xp, abilitie
           </UnorderedList>
         </HStack>
       </Flex>
-    </Flex>
+    </Flex >
   )
 }
 
