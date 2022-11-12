@@ -1,5 +1,5 @@
 import { Box, Flex, Text, HStack, UnorderedList, ListItem } from '@chakra-ui/react';
-import { capitalizeFirstLetter } from '@utils/uppercase';
+import { capitalizeFirstLetter } from '@utils/index';
 import Image from "next/image";
 import { ReactNode } from "react"
 

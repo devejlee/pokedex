@@ -1,16 +1,25 @@
-import { Button, Link } from '@chakra-ui/react';
+import { Button, Link, Box } from '@chakra-ui/react';
 import { LayoutDefault } from '@components/LayoutDefault/LayoutDefault';
 import { PokemonList } from '@components/PokemonList/PokemonList';
 import { PokemonListItem } from '@components/PokemonListItem/PokemonListItem';
 import { useQueryPokemon } from '@hooks/index';
 import { Pokemon } from '@typedef/pokemon';
-import { capitalizeFirstLetter } from '@utils/uppercase';
+import { capitalizeFirstLetter } from '@utils/index';
 import Head from 'next/head'
 import NextLink from 'next/link';
+import { useRef } from 'react';
 import { NextPageWithLayout } from './_app';
 
 const Home: NextPageWithLayout = () => {
   const pokemons = useQueryPokemon()
+  const pokemonListRef = useRef<HTMLDivElement>(null)
+
+  const handleScroll = () => {
+    if (!pokemonListRef.current) return
+    if (pokemonListRef.current.scrollHeight - pokemonListRef.current.scrollTop === pokemonListRef.current.clientHeight) {
+      pokemons.fetchNextPage()
+    }
+  }
 
   return (
     <>
@@ -20,34 +29,38 @@ const Home: NextPageWithLayout = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <PokemonList
-        isLoading={pokemons.isLoading}
-        isError={pokemons.isError}
-      >
-        {
-          pokemons.data?.pages.map((group) =>
-            group?.results.map((pokemon: Pokemon) => <div key={pokemon.name}>
-              <PokemonListItem>
-                <NextLink href={`/pokemon/${pokemon.name}`} key={pokemon.name} passHref>
-                  <Link width="100%" height="100%" textAlign="center" _hover={{}}>
-                    {capitalizeFirstLetter(pokemon.name)}
-                  </Link>
-                </NextLink>
-              </PokemonListItem>
-            </div>)
-          )
-        }
-        <Button
-          onClick={() => pokemons.fetchNextPage()}
-          disabled={!pokemons.hasNextPage || pokemons.isFetchingNextPage}
+      <Box>
+        <PokemonList
+          isLoading={pokemons.isLoading}
+          isError={pokemons.isError}
+          pokemonListRef={pokemonListRef}
+          onScroll={handleScroll}
         >
-          {pokemons.isFetchingNextPage
-            ? "Loading more..."
-            : pokemons.hasNextPage
-              ? "Load More"
-              : "Nothing more to load"}
-        </Button>
-      </PokemonList>
+          {
+            pokemons.data?.pages.map((group) =>
+              group?.results.map((pokemon: Pokemon) => <div key={pokemon.name}>
+                <PokemonListItem>
+                  <NextLink href={`/pokemon/${pokemon.name}`} key={pokemon.name} passHref>
+                    <Link width="100%" height="100%" textAlign="center" _hover={{}}>
+                      {capitalizeFirstLetter(pokemon.name)}
+                    </Link>
+                  </NextLink>
+                </PokemonListItem>
+              </div>)
+            )
+          }
+          <Button
+            onClick={() => pokemons.fetchNextPage()}
+            disabled={!pokemons.hasNextPage || pokemons.isFetchingNextPage}
+          >
+            {pokemons.isFetchingNextPage
+              ? "Loading more..."
+              : pokemons.hasNextPage
+                ? "Load More"
+                : "Nothing more to load"}
+          </Button>
+        </PokemonList>
+      </Box>
     </>
   )
 }
