@@ -15,13 +15,11 @@ const LayoutDefault = ({ children }: LayoutDefaultProps) => {
             {children}
           </Box>
           <Button p={0} alignSelf="center" size={'lg'} maxW="200px" w="100%" variant="green">
-            <Flex>
-              <NextLink href="/" passHref>
-                <Link pt="4px" pb="8px" width="100%" height="100%" _hover={{}} textStyle={'body1'}>
-                  Home
-                </Link>
-              </NextLink>
-            </Flex>
+            <NextLink href="/" passHref>
+              <Link pt="4px" pb="8px" width="100%" height="100%" _hover={{}} textStyle={'body1'}>
+                Home
+              </Link>
+            </NextLink>
           </Button>
         </Flex>
       </Box >
