@@ -50,8 +50,12 @@ const Home: NextPageWithLayout = () => {
             )
           }
           <Button
-            onClick={() => pokemons.fetchNextPage()}
+            alignSelf={'center'}
+            flexShrink={0}
+            width={'100px'}
+            height={'50px'}
             disabled={!pokemons.hasNextPage || pokemons.isFetchingNextPage}
+            onClick={() => pokemons.fetchNextPage()}
           >
             {pokemons.isFetchingNextPage
               ? "Loading more..."
