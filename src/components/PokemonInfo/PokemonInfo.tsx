@@ -19,13 +19,17 @@ interface PokemonInfoProps extends FlexProps {
 const PokemonInfo = ({ isLoading, isError, name, id, image, weight, xp, abilities, ...props }: PokemonInfoProps) => {
   if (isLoading) {
     return (
-      <div>Loading...</div>
+      <Flex flexDir={'column'} justifyContent="center" bg="#222" border="2px" h={400} rounded="10px" {...props}>
+        <Text textAlign="center" textStyle={'body2'} color="#fff">Loading Pokemon...</Text>
+      </Flex>
     )
   }
 
   if (isError) {
     return (
-      <div>Error</div>
+      <Flex flexDir={'column'} justifyContent="center" bg="#222" border="2px" h={400} rounded="10px" {...props}>
+        <Text textAlign="center" textStyle={'body2'} color="#fff">An error occurred fetching the pokemon.</Text>
+      </Flex>
     )
   }
 
