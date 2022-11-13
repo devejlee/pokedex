@@ -1,4 +1,4 @@
-import { Button, Link, Box } from '@chakra-ui/react';
+import { Link, Box, Text } from '@chakra-ui/react';
 import { LayoutDefault } from '@components/LayoutDefault/LayoutDefault';
 import { PokemonList } from '@components/PokemonList/PokemonList';
 import { PokemonListItem } from '@components/PokemonListItem/PokemonListItem';
@@ -58,20 +58,10 @@ const Home: NextPageWithLayout = () => {
               </div>)
             )
           }
-          <Button
-            alignSelf={'center'}
-            flexShrink={0}
-            width={'100px'}
-            height={'50px'}
-            disabled={!pokemons.hasNextPage || pokemons.isFetchingNextPage}
-            onClick={() => pokemons.fetchNextPage()}
-          >
-            {pokemons.isFetchingNextPage
-              ? "Loading more..."
-              : pokemons.hasNextPage
-                ? "Load More"
-                : "Nothing more to load"}
-          </Button>
+          <Text textAlign="center" textStyle={'body2'} color="#fff">
+            {!pokemons.hasNextPage && "Nothing more to load"}
+            {pokemons.isFetchingNextPage && "Loading more..."}
+          </Text>
         </PokemonList>
       </Box>
     </>
