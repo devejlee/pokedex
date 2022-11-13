@@ -1,4 +1,4 @@
-import { Flex, FlexProps } from '@chakra-ui/react';
+import { Flex, FlexProps, Text } from '@chakra-ui/react';
 import { ReactNode } from "react";
 
 interface PokemonListProps extends FlexProps {
@@ -12,18 +12,22 @@ interface PokemonListProps extends FlexProps {
 const PokemonList = ({ isLoading, isError, children, pokemonListRef, onScroll, ...props }: PokemonListProps) => {
   if (isLoading) {
     return (
-      <div>Loading...</div>
+      <Flex flexDir={'column'} justifyContent="center" ref={pokemonListRef} bg="#222" border="2px" h={400} overflowY="scroll" rounded="10px" {...props}>
+        <Text textAlign="center" textStyle={'body2'} color="#fff">Loading...</Text>
+      </Flex>
     )
   }
 
   if (isError) {
     return (
-      <div>Error</div>
+      <Flex flexDir={'column'} justifyContent="center" ref={pokemonListRef} bg="#222" border="2px" h={400} overflowY="scroll" rounded="10px" {...props}>
+        <Text textAlign="center" textStyle={'body2'} color="#fff">An error occurred.</Text>
+      </Flex>
     )
   }
 
   return (
-    <Flex flexDir={'column'} onScroll={onScroll} ref={pokemonListRef} bg="#222" border="2px" maxH={400} overflowY="scroll" rounded="10px" {...props}>
+    <Flex onScroll={onScroll} flexDir={'column'} ref={pokemonListRef} bg="#222" border="2px" maxH={400} overflowY="scroll" rounded="10px" {...props}>
       {children}
     </Flex>
   )
