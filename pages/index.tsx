@@ -39,6 +39,12 @@ const Home: NextPageWithLayout = () => {
       </Head>
 
       <Box>
+        <Box>pokemonListRef.current?.scrollHeight: {pokemonListRef.current?.scrollHeight}</Box>
+        <Box>pokemonListRef.current.scrollTop: {pokemonListRef.current?.scrollTop}</Box>
+        <Box>pokemonListRef.current.clientHeight: {pokemonListRef.current?.clientHeight}</Box>
+      </Box>
+
+      <Box>
         <PokemonList
           isLoading={pokemons.isLoading}
           isError={pokemons.isError}
