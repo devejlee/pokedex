@@ -16,7 +16,6 @@ const Home: NextPageWithLayout = () => {
 
   const handleScroll = () => {
     if (!pokemonListRef.current) return
-    alert('scrolled')
     if (pokemonListRef.current.scrollHeight - pokemonListRef.current.scrollTop === pokemonListRef.current.clientHeight) {
       pokemons.fetchNextPage()
     }
