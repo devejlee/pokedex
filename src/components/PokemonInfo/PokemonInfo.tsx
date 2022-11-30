@@ -1,7 +1,8 @@
 import { Box, Flex, FlexProps, Text, HStack, UnorderedList, ListItem } from '@chakra-ui/react';
+import withLoading from '@components/withLoading/withLoading';
 import { capitalizeFirstLetter } from '@utils/index';
 import Image from "next/image";
-import { ReactNode } from "react"
+import { ReactNode } from "react";
 
 interface PokemonInfoProps extends FlexProps {
   isLoading?: boolean;
@@ -17,21 +18,6 @@ interface PokemonInfoProps extends FlexProps {
 }
 
 const PokemonInfo = ({ isLoading, isError, name, id, image, weight, xp, abilities, ...props }: PokemonInfoProps) => {
-  if (isLoading) {
-    return (
-      <Flex flexDir={'column'} justifyContent="center" bg="#222" border="2px" h={400} rounded="10px" {...props}>
-        <Text textAlign="center" textStyle={'body2'} color="#fff">Loading Pokemon...</Text>
-      </Flex>
-    )
-  }
-
-  if (isError) {
-    return (
-      <Flex flexDir={'column'} justifyContent="center" bg="#222" border="2px" h={400} rounded="10px" {...props}>
-        <Text textAlign="center" textStyle={'body2'} color="#fff">An error occurred fetching the pokemon.</Text>
-      </Flex>
-    )
-  }
 
   return (
     <Flex bg="#222" h={400} overflowY="scroll" justifyContent={'center'} alignItems={'center'} rounded="10px" {...props}>
@@ -63,4 +49,4 @@ const PokemonInfo = ({ isLoading, isError, name, id, image, weight, xp, abilitie
   )
 }
 
-export { PokemonInfo }
+export default withLoading(PokemonInfo)

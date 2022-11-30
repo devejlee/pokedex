@@ -1,6 +1,6 @@
 import { LayoutDefault } from '@components/LayoutDefault/LayoutDefault';
 import { fetchPokemonById } from '@api/pokemonById';
-import { PokemonInfo } from '@components/PokemonInfo/PokemonInfo';
+import PokemonInfo from '@components/PokemonInfo/PokemonInfo';
 import { useQueryPokemonById } from "@hooks/index"
 import type { GetStaticProps, GetStaticPaths } from 'next'
 import { useRouter } from "next/router";
